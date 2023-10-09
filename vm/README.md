@@ -101,18 +101,18 @@
         -sudo nano docker-compose.yml:
          ```
          version: '3'
-services:
-  portainer:
-    image: portainer/portainer-ce
-    container_name: mon_conteneur_portainer
-    ports:
-      - "9000:9000"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
-    restart: always
-volumes:
-  portainer_data:
+          services:
+           portainer:
+           image: portainer/portainer-ce
+            container_name: mon_conteneur_portainer
+            ports:
+                  - "9000:9000"
+            volumes:
+                  - /var/run/docker.sock:/var/run/docker.sock
+                  - portainer_data:/data
+            restart: always
+              volumes:
+                  portainer_data:
 
          ```
          -docker-compose up -d
