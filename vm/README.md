@@ -88,9 +88,37 @@
   ->Installer Portainer
 
        ```
+        + method 1
        - docker volume create portainer_data
        - docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
         - docker run -d -p 9000:9000 \
+
+
+
+        + method 2 
+        -mkdir ~/portainer
+        -cd ~/portainer
+        -sudo nano docker-compose.yml:
+         ```
+         version: '3'
+services:
+  portainer:
+    image: portainer/portainer-ce
+    container_name: mon_conteneur_portainer
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    restart: always
+volumes:
+  portainer_data:
+
+         ```
+         -docker-compose up -d
+
+
+
       ```
 
   ->Installer Python3
